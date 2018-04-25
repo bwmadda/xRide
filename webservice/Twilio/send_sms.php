@@ -3,8 +3,8 @@
 require '../../db.php';
 $mobile_no = $_POST['mobile_no'];
 require('lib/Services/Twilio.php');
-$sid = ""; // Your Account SID from www.twilio.com/user/account
-$token = ""; // Your Auth Token from www.twilio.com/user/account
+$sid = "AC875332cdec69050d10544fe9d46577fc"; // Your Account SID from www.twilio.com/user/account
+$token = "67f4d2f7bb436e0ec0f6a06bda4c86fe"; // Your Auth Token from www.twilio.com/user/account
 $code = rand(100000, 999999);
 $smstext = "$code Car Pooling App Registration OTP";
 $client = new Services_Twilio($sid, $token);
@@ -19,7 +19,7 @@ $result = mysqli_query($conn, "INSERT INTO tbl_varifyotp (mobile_no, smsid, veri
 if ($result) {
     $response["success"] = 1;
     $response["messageid"] = $messageid;
-} 
+}
 else {
     $response["success"] = 0;
     $response["messageid"] = "fail";
